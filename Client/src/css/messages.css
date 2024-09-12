@@ -1,0 +1,19 @@
+.messages-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: flex-start;
+    height: 100vh;
+    padding-top: 30px;
+}
+.receiver-name{
+    width: max-content;
+    margin-top: 30px;
+}
+.messages-container li{
+    background-color: #D2E0FB;
+    width: 50vw;
+    margin-bottom: 5px;
+    padding: 10px;
+    text-align: left;
+}
