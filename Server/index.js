@@ -3,13 +3,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const con=require("./config/db");
-const http = require('http');
-const socketIo = require('socket.io');
 const messageRoutes = require("./routes/messageRoute");
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
-
 con.connect((err) => {
     if (err) {
       console.log(err);
@@ -61,27 +58,8 @@ con.connect((err) => {
   
   })
 
-  const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: "http://localhost:3000", 
-    methods: ["GET", "POST"]
-  }
-});
-
-io.on("connection", (socket) => {
-  console.log("New client connected");
-
-  socket.on("disconnect", () => {
-    console.log("Client disconnected");
-  });
 
 
-  socket.on("sendMessage", (messageData) => {
-   
-    io.emit("receiveMessage", messageData);
-  });
-});
 
 
   const authRoutes =require("./routes/authRoutes");
